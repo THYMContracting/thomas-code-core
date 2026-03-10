@@ -162,10 +162,13 @@
         <h2>Donate Broken Tech</h2>
         <p>Don't let it hit the landfill. I'll use it for parts or restore it for someone in need.</p>
         <form>
-            <input type="text" placeholder="Your Name">
-            <input type="text" placeholder="Item (e.g., Broken Xbox One)">
-            <textarea placeholder="Tell me what's wrong with it..."></textarea>
-            <button type="button" class="submit-btn">SEND DONATION REQUEST</button>
+            <form action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email Address" required>
+    <input type="text" name="item" placeholder="Item (e.g., Broken Xbox One)" required>
+    <textarea name="message" placeholder="Tell me what's wrong with it..."></textarea>
+    <button type="submit" class="submit-btn">SEND DONATION REQUEST</button>
+</form>
         </form>
     </div>
 
@@ -195,3 +198,4 @@
 
 </body>
 </html>
+
