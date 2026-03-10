@@ -3,70 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thomas Code & Core | Electronics Repair</title>
+    <title>Thomas Code & Core | Tech Solutions</title>
     <style>
+        /* TECH-THEME DESIGN SYSTEM */
+        :root {
+            --neon-cyan: #00f2ff;
+            --deep-purple: #7822f0;
+            --bg-dark: #0a0c10;
+            --card-bg: #161b22;
+            --text-gray: #8b949e;
+            --code-font: 'Courier New', Courier, monospace;
+        }
+
         body {
-            background-color: #0d1117;
-            color: #c9d1d9;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-dark);
+            color: #f0f6fc;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
+            padding: 20px;
         }
-        .container {
+
+        /* LOGO & HEADER */
+        .header {
             text-align: center;
-            padding: 2rem;
-            border: 1px solid #30363d;
-            border-radius: 12px;
-            background: #161b22;
-            box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);
+            margin-bottom: 30px;
         }
-        img {
-            max-width: 200px;
-            height: auto;
+
+        img.logo {
+            max-width: 180px;
+            filter: drop-shadow(0 0 15px rgba(0, 242, 255, 0.4));
+            border-radius: 50%;
         }
+
         h1 {
-            color: #00f2ff;
-            letter-spacing: 2px;
-            margin-top: 1rem;
-        }
-        p {
-            font-size: 1.2rem;
-            color: #8b949e;
-        }
-        .tagline {
-            color: #7822f0;
-            font-weight: bold;
+            font-family: var(--code-font);
+            color: var(--neon-cyan);
             text-transform: uppercase;
+            letter-spacing: 4px;
+            margin: 10px 0;
         }
-        .cta-button {
-            display: inline-block;
-            margin-top: 2rem;
-            padding: 12px 24px;
-            background-color: #00f2ff;
-            color: #0d1117;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: bold;
-            transition: 0.3s;
+
+        /* INTERACTIVE TABS */
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
-        .cta-button:hover {
-            background-color: #7822f0;
+
+        .tab-btn {
+            background: transparent;
+            border: 1px solid var(--deep-purple);
             color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: var(--code-font);
+            transition: 0.3s;
+            border-radius: 4px;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background: var(--deep-purple);
+            box-shadow: 0 0 10px var(--deep-purple);
+        }
+
+        /* CONTENT SECTIONS */
+        .content-section {
+            display: none; /* Hidden by default */
+            max-width: 800px;
+            width: 100%;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #30363d;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .item-card {
+            background: #0d1117;
+            padding: 15px;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .price { color: var(--neon-cyan); font-weight: bold; }
+
+        input, textarea, button.submit-btn {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background: #0d1117;
+            border: 1px solid var(--text-gray);
+            color: white;
+            border-radius: 4px;
+        }
+
+        button.submit-btn {
+            background: var(--neon-cyan);
+            color: black;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="Thomas-Code-&-Core-Logo.png" alt="Thomas Code & Core Logo">
-        <h1>THOMAS CODE & CORE</h1>
-        <p class="tagline">Repair • Resell • Revive</p>
-        <p>Specializing in Game Console & Hardware Restoration.</p>
-        <a href="mailto:your-email@example.com" class="cta-button">Book a Repair</a>
-    </div>
-</body>
 
+    <div class="header">
+        <img src="Thomas-Code-&-Core_logo.png" alt="Logo" class="logo">
+        <h1>Thomas Code & Core</h1>
+    </div>
+
+    <div class="nav-tabs">
+        <button class="tab-btn active" onclick="openTab(event, 'inventory')">FOR SALE</button>
+        <button class="tab-btn" onclick="openTab(event, 'donate')">DONATE</button>
+        <button class="tab-btn" onclick="openTab(event, 'bio')">THE MISSION</button>
+    </div>
+
+    <div id="inventory" class="content-section active">
+        <h2>Refurbished Inventory</h2>
+        <p>Expertly restored hardware. Tested. Cleaned. Revived.</p>
+        <div class="grid">
+            <div class="item-card">
+                <h3>PS4 Console (500GB)</h3>
+                <p>New thermal paste & deep clean.</p>
+                <p class="price">$140.00</p>
+            </div>
+            <div class="item-card">
+                <h3>DualShock 4 Controller</h3>
+                <p>Fixed stick drift & new battery.</p>
+                <p class="price">$35.00</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="donate" class="content-section">
+        <h2>Donate Broken Tech</h2>
+        <p>Don't let it hit the landfill. I'll use it for parts or restore it for someone in need.</p>
+        <form>
+            <input type="text" placeholder="Your Name">
+            <input type="text" placeholder="Item (e.g., Broken Xbox One)">
+            <textarea placeholder="Tell me what's wrong with it..."></textarea>
+            <button type="button" class="submit-btn">SEND DONATION REQUEST</button>
+        </form>
+    </div>
+
+    <div id="bio" class="content-section">
+        <h2>The Mission</h2>
+        <p>I’m Thomas. My background in general contracting taught me how to build structures that last; now, I apply that same precision to electronics and machine learning.</p>
+        <p>Through <strong>Thomas Code & Core</strong>, I bridge the gap between physical hardware repair and digital logic. Whether it's soldering a motherboard or training a model, the goal is the same: <strong>Zero Waste. Maximum Performance.</strong></p>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, content, tablinks;
+            content = document.getElementsByClassName("content-section");
+            for (i = 0; i < content.length; i++) {
+                content[i].style.display = "none";
+                content[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+
+</body>
 </html>
