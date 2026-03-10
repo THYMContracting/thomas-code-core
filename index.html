@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thomas Code & Core | Tech Solutions</title>
+    <title>Thomas Code & Core | Alex Thomas</title>
     <style>
-        /* TECH-THEME DESIGN SYSTEM */
         :root {
             --neon-cyan: #00f2ff;
             --deep-purple: #7822f0;
@@ -26,7 +25,6 @@
             padding: 20px;
         }
 
-        /* LOGO & HEADER */
         .header {
             text-align: center;
             margin-bottom: 30px;
@@ -46,7 +44,6 @@
             margin: 10px 0;
         }
 
-        /* INTERACTIVE TABS */
         .nav-tabs {
             display: flex;
             gap: 10px;
@@ -71,9 +68,8 @@
             box-shadow: 0 0 10px var(--deep-purple);
         }
 
-        /* CONTENT SECTIONS */
         .content-section {
-            display: none; /* Hidden by default */
+            display: none;
             max-width: 800px;
             width: 100%;
             background: var(--card-bg);
@@ -111,12 +107,13 @@
 
         input, textarea, button.submit-btn {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             margin-top: 10px;
             background: #0d1117;
             border: 1px solid var(--text-gray);
             color: white;
             border-radius: 4px;
+            box-sizing: border-box;
         }
 
         button.submit-btn {
@@ -125,57 +122,64 @@
             font-weight: bold;
             border: none;
             cursor: pointer;
+            text-transform: uppercase;
         }
+
+        button.submit-btn:hover {
+            background: white;
+        }
+
+        strong { color: var(--neon-cyan); }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <img src="Thomas-Code-&-Core_logo.png" alt="Logo" class="logo">
+        <img src="Thomas-Code-&-Core_logo.png" alt="Thomas Code & Core Logo" class="logo">
         <h1>Thomas Code & Core</h1>
     </div>
 
     <div class="nav-tabs">
-        <button class="tab-btn active" onclick="openTab(event, 'inventory')">FOR SALE</button>
-        <button class="tab-btn" onclick="openTab(event, 'donate')">DONATE</button>
+        <button class="tab-btn active" onclick="openTab(event, 'inventory')">INVENTORY</button>
+        <button class="tab-btn" onclick="openTab(event, 'donate')">RECYCLE/DONATE</button>
         <button class="tab-btn" onclick="openTab(event, 'bio')">THE MISSION</button>
     </div>
 
     <div id="inventory" class="content-section active">
-        <h2>Refurbished Inventory</h2>
-        <p>Expertly restored hardware. Tested. Cleaned. Revived.</p>
+        <h2>Refurbished Hardware</h2>
+        <p>Restoring life to electronics through precision repair.</p>
         <div class="grid">
             <div class="item-card">
-                <h3>PS4 Console (500GB)</h3>
-                <p>New thermal paste & deep clean.</p>
+                <h3>PS4 Console</h3>
+                <p>Cleaned, Re-pasted, Verified.</p>
                 <p class="price">$140.00</p>
             </div>
             <div class="item-card">
-                <h3>DualShock 4 Controller</h3>
-                <p>Fixed stick drift & new battery.</p>
-                <p class="price">$35.00</p>
+                <h3>Component Repair</h3>
+                <p>HDMI Ports / Disc Drives</p>
+                <p class="price">Contact for Quote</p>
             </div>
         </div>
     </div>
 
     <div id="donate" class="content-section">
-        <h2>Donate Broken Tech</h2>
-        <p>Don't let it hit the landfill. I'll use it for parts or restore it for someone in need.</p>
-        <form>
-            <form action="https://formspree.io/f/meeraqqv" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email Address" required>
-    <input type="text" name="item" placeholder="Item (e.g., Broken Xbox One)" required>
-    <textarea name="message" placeholder="Tell me what's wrong with it..."></textarea>
-    <button type="submit" class="submit-btn">SEND DONATION REQUEST</button>
-</form>
+        <h2>Donate Broken Electronics</h2>
+        <p>Help reduce e-waste. I accept broken consoles and devices for repair practice or part harvesting.</p>
+        <form action="https://formspree.io/f/meeraqqv" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <input type="text" name="device" placeholder="Device Type (e.g. PS4, Laptop)" required>
+            <textarea name="condition" placeholder="Describe the issue..."></textarea>
+            <button type="submit" class="submit-btn">Submit Request</button>
         </form>
     </div>
 
     <div id="bio" class="content-section">
         <h2>The Mission</h2>
-        <p>I’m Thomas. My background in general contracting taught me how to build structures that last; now, I apply that same precision to electronics and machine learning.</p>
-        <p>Through <strong>Thomas Code & Core</strong>, I bridge the gap between physical hardware repair and digital logic. Whether it's soldering a motherboard or training a model, the goal is the same: <strong>Zero Waste. Maximum Performance.</strong></p>
+        <p>Hello, My name is <strong>Alex Thomas</strong>.</p>
+        <p>I am currently pursuing a degree in <strong>Machine Learning and Design Techniques</strong>. My journey is fueled by a dual passion: mastering the complex algorithms of the future while perfecting the physical repair of the devices we use today.</p>
+        <p>Through <strong>Thomas Code & Core</strong>, I am actively refining my skills in electronics and device restoration. By bridging high-level design theory with hands-on hardware repair, I aim to revive technology that would otherwise be forgotten.</p>
+        <p><em>Code the logic. Repair the core.</em></p>
     </div>
 
     <script>
@@ -198,5 +202,3 @@
 
 </body>
 </html>
-
-
