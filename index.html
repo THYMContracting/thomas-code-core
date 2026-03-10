@@ -93,4 +93,163 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* INVENTORY GRID & CARDS */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .item-card {
+            background: #0d1117;
+            padding: 20px;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .item-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 5px 15px rgba(0, 242, 255, 0.2);
+        }
+
+        .price { color: var(--neon-cyan); font-weight: bold; font-family: var(--code-font); }
+
+        /* BENCH STATUS LOG */
+        .status-log {
+            margin-top: 40px; 
+            border-top: 1px solid #30363d; 
+            padding-top: 20px;
+        }
+
+        .status-log h3 {
+            font-family: var(--code-font); 
+            font-size: 0.9rem; 
+            color: var(--text-gray);
+            margin-bottom: 15px;
+        }
+
+        .status-list {
+            list-style: none; 
+            padding: 0; 
+            font-family: var(--code-font); 
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        /* FORMS */
+        input, textarea, button.submit-btn {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            background: #0d1117;
+            border: 1px solid var(--text-gray);
+            color: white;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button.submit-btn {
+            background: var(--neon-cyan);
+            color: black;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: 0.2s;
+        }
+
+        button.submit-btn:hover {
+            background: white;
+            box-shadow: 0 0 10px white;
+        }
+
+        strong { color: var(--neon-cyan); }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <img src="Thomas-Code-&-Core-Logo.png" alt="Thomas Code & Core Logo" class="logo">
+        <h1>Thomas Code & Core</h1>
+    </div>
+
+    <div class="nav-tabs">
+        <button class="tab-btn active" onclick="openTab(event, 'inventory')">INVENTORY</button>
+        <button class="tab-btn" onclick="openTab(event, 'donate')">RECYCLE/DONATE</button>
+        <button class="tab-btn" onclick="openTab(event, 'bio')">THE MISSION</button>
+    </div>
+
+    <div id="inventory" class="content-section active">
+        <h2>Refurbished Hardware</h2>
+        <p>Restoring life to electronics through precision repair.</p>
+        <div class="grid">
+            <div class="item-card">
+                <h3>PS4 Console</h3>
+                <p>Cleaned, Re-pasted, Verified.</p>
+                <p class="price">$140.00</p>
+            </div>
+            <div class="item-card">
+                <h3>Component Repair</h3>
+                <p>HDMI Ports / Disc Drives</p>
+                <p class="price">Contact for Quote</p>
+            </div>
+        </div>
+
+        <div class="status-log">
+            <h3>// CURRENT BENCH STATUS</h3>
+            <ul class="status-list">
+                <li><span style="color: #ffaa00;">[IN_PROGRESS]</span> PS4 Slim #104 - Thermal Pad Replacement</li>
+                <li><span style="color: #00ff00;">[COMPLETED]</span> DualShock 4 - Hall Effect Joystick Upgrade</li>
+                <li><span style="color: var(--neon-cyan);">[WAITING]</span> Xbox Series X - HDMI Port Repair</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="donate" class="content-section">
+        <h2>Donate Broken Electronics</h2>
+        <p>Help reduce e-waste. I accept broken consoles and devices for repair practice or part harvesting.</p>
+        <form action="https://formspree.io/f/meeraqqv" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <input type="text" name="device" placeholder="Device Type (e.g. PS4, Laptop)" required>
+            <textarea name="condition" placeholder="Describe the issue..."></textarea>
+            <button type="submit" class="submit-btn">Submit Request</button>
+        </form>
+    </div>
+
+    <div id="bio" class="content-section">
+        <h2>The Mission</h2>
+        <p>Hello, My name is <strong>Alex Thomas</strong>.</p>
+        <p>I am currently pursuing a degree in <strong>Machine Learning and Design Techniques</strong>. My journey is fueled by a dual passion: mastering the complex algorithms of the future while perfecting the physical repair of the devices we use today.</p>
+        <p>Through <strong>Thomas Code & Core</strong>, I am actively refining my skills in electronics and device restoration. By bridging high-level design theory with hands-on hardware repair, I aim to revive technology that would otherwise be forgotten.</p>
+        <p><em>Code the logic. Repair the core.</em></p>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, content, tablinks;
+            content = document.getElementsByClassName("content-section");
+            for (i = 0; i < content.length; i++) {
+                content[i].style.display = "none";
+                content[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+
+</body>
+</html>
